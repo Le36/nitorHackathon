@@ -1,10 +1,11 @@
 from app import app
 from flask import render_template, request, redirect, session
 from modules.activites import get_activities
+from modules.closest import get_closest
 
 from modules.me import get_me
 from modules.users import get_users
-from modules.coordinates import get_coordinates, get_friend_coordinates
+from modules.coordinates import get_coordinates, get_friend_coordinates, get_own_coords
 from modules.toFlights import get_toFlights
 from modules.fromFlights import get_fromFlights
 from modules.hacktivities import get_hacktivities
@@ -43,6 +44,11 @@ def activities():
 @app.route("/map", methods=["GET"])
 def map_markers():
     return render_template("map.html", coords=get_coordinates(), me=get_me())
+
+
+@app.route("/closest", methods=["GET"])
+def closest_restaurants():
+    return render_template("closest.html", places=get_closest(get_own_coords()))
 
 
 @app.route("/users", methods=["POST", "GET"])
