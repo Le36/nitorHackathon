@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% include "components/nav-bar.html" %}
+
+{% block content %}
+
+<div class="container">
+  <h2>Users</h2>
+  <table>
+    <tr>
+      <th>
+        id
+      </th>
+      <th>
+        name
+      </th>
+      <th>
+        email
+      </th>
+    </tr>
+    {% for user in data %}
+    {% if user.id == user_id %}
+    <tr>
+      <th>
+        {{ user.id }}
+      </th>
+      <th>
+        <a href="/users/{{ user.id }}">{{ user.name }}</a>
+      </th>
+      <th>
+        {{ user.email }}
+      </th>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </table>
+
+</div>
+
+{% endblock %}
