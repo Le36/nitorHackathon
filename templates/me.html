@@ -2,32 +2,32 @@
 {% include "components/nav-bar.html" %}
 {% block content %}
 
-<div class="container">
-  <h2>My profile</h2>
+    <div class="container">
+        <h2>My profile</h2>
 
-  <br><br>
-  profile pic:
-  <br><br>
-  <img src="https://picsum.photos/seed/{{ me.id }}/200/" alt="Profile picture" style="border: 1px solid #ddd;
+        <br><br>
+        Profile pic:
+        <br><br>
+        <img src="https://picsum.photos/seed/{{ me.id }}/200/" alt="Profile picture" style="border: 1px solid #ddd;
                       border-radius: 4px;
                       padding: 5px;
                       width: 150px;">
-  <br><br>
-  id: {{ me.id }} <br><br>
+        <br><br>
+        Id: {{ me.id }} <br><br>
 
-  name: {{ me.name }} <br><br>
+        Name: {{ me.name }} <br><br>
 
-  email: {{ me.email }} <br><br>
+        Email: {{ me.email }} <br><br>
 
-  My Hacktivity:
+        My Hacktivity:
 
-  {% for hacktivity in hacktivities %}
-  {% if hacktivity.id == task_id %}
+        {% for hacktivity in hacktivities %}
+            {% if hacktivity.id == task_id %}
 
-  {{ hacktivity.name }}
+                {{ hacktivity.name }}
 
-  {% endif %}
-  {% endfor %}
-</div>
-{%include "components/footer.html" %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% include "components/footer.html" %}
 {% endblock %}
