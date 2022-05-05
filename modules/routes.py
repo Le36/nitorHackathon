@@ -56,7 +56,9 @@ def closest_restaurants():
         place_lat = float(place["lat"])
         place_lon = float(place["lon"])
         distance = get_distance(own_lat, own_lon, place_lat, place_lon)
-        coords.append((place["tags"]["name"], str(distance)))
+        coords.append((place["tags"]["name"], int(distance)))
+
+    coords.sort(key=lambda a: a[1])
 
     return render_template("closest.html", places=coords)
 
@@ -113,8 +115,6 @@ def toFlight(flight_id):
 def find_collegue():
     distances = get_friend_coordinates()
     distances.sort(key=lambda a: a[1])
-
-    print(distances, file=sys.stdout)
 
     return render_template("components/find-friend.html", distances=distances)
 

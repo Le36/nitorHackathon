@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>closest restaurants</title>
-</head>
 {% extends "base.html" %}
 {% include "components/nav-bar.html" %}
 {% block content %}
-    <body>
-    {% for place in places %}
-        {{ place }} <br><br>
-    {% endfor %}
-    </body>
+    <table class="table table-dark" style="background-color: #383838; margin-top: 2em; margin-bottom: 8em;">
+    <thead>
+      <tr>
+        <th scope="col">Restaurant name</th>
+        <th scope="col">Metres away</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for place in places %}
+
+      <tr>
+        <td>{{place[0]}}</td>
+        <td>{{place[1]}} </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
 {% endblock %}
 </html>
