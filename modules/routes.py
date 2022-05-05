@@ -30,9 +30,12 @@ def secret():
 
 @app.route("/activities", methods=["GET"])
 def activities():
-    activities = get_activities()
-    print(activities, file=sys.stdout)
-    return render_template("components/activities.html", activities=activities)
+    return render_template("components/activities.html", activities=get_activities())
+
+
+@app.route("/map", methods=["GET"])
+def map_markers():
+    return render_template("map.html", coords=get_coordinates(), me=get_me())
 
 
 @app.route("/users", methods=["POST", "GET"])
@@ -82,6 +85,7 @@ def toFlight(flight_id):
             flight_id=flight_id
         )
 
+
 @app.route("/find-friend", methods=["GET"])
 def find_collegue():
     distances = get_friend_coordinates()
@@ -90,6 +94,7 @@ def find_collegue():
     print(distances, file=sys.stdout)
 
     return render_template("components/find-friend.html", distances=distances)
+
 
 @app.errorhandler(404)
 def error404(error):
