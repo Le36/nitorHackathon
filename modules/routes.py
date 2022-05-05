@@ -56,7 +56,7 @@ def closest_restaurants():
         place_lat = float(place["lat"])
         place_lon = float(place["lon"])
         distance = get_distance(own_lat, own_lon, place_lat, place_lon)
-        coords.append(place["tags"]["name"] + " | Distance: " + str(distance) + "m")
+        coords.append((place["tags"]["name"], str(distance)))
 
     return render_template("closest.html", places=coords)
 
