@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% include "components/nav-bar.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <h2>Passangers</h2>
+        <table>
+            <tr>
+                <th>
+                    id
+                </th>
+                <th>
+                    name
+                </th>
+                <th>
+                    email
+                </th>
+            </tr>
+            {% for user in users %}
+            {% if (user.tFlightId == flight_id) or (user.fromFlightId == flight_id) %}
+                <tr>
+                    <th>
+                        {{ user.id }}
+                    </th>
+                    <th>
+                        <a href="/users/{{ user.id }}">{{ user.name }}</a>
+                    </th>
+                    <th>
+                        {{ user.email }}
+                    </th>
+                    <th><img src="https://picsum.photos/seed/{{ user.id }}/200/" alt="Profile picture" style="border: 1px solid #ddd;
+                      border-radius: 4px;
+                      padding: 5px;
+                      width: 150px;"></th>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+
+    </div>
+
+{% endblock %}

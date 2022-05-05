@@ -5,6 +5,8 @@ from modules.activites import get_activities
 from modules.me import get_me
 from modules.users import get_users
 from modules.coordinates import get_coordinates
+from modules.toFlights import get_toFlights
+from modules.fromFlights import get_fromFlights
 import sys
 
 
@@ -37,17 +39,39 @@ def users():
 def user(user_id):
     if request.method == "GET":
         return render_template(
-          "components/user.html", 
-          users=get_users(), 
-          coordinates=get_coordinates(),
-          user_id=user_id
-          )
+            "components/user.html",
+            users=get_users(),
+            coordinates=get_coordinates(),
+            user_id=user_id
+        )
+
 
 @app.route("/activities/<string:activity_id>", methods=["POST", "GET"])
 def activity(activity_id):
     if request.method == "GET":
         return render_template(
-          "components/activity.html", 
-          users=get_users(), 
-          activity_id=activity_id
-          )
+            "components/activity.html",
+            users=get_users(),
+            activities=get_activities(),
+            activity_id=activity_id
+        )
+
+
+@app.route("/flights", methods=["POST", "GET"])
+def toFlights():
+    if request.method == "GET":
+        return render_template(
+            "components/flights.html",
+            toFlights=get_toFlights(),
+            fromFlights=get_fromFlights()
+        )
+
+
+@app.route("/flights/<string:flight_id>", methods=["POST", "GET"])
+def toFlight(flight_id):
+    if request.method == "GET":
+        return render_template(
+            "components/flight.html",
+            users=get_users(),
+            flight_id=flight_id
+        )
