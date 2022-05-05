@@ -54,7 +54,7 @@ def get_hacktivities():
         },
         {
             "id": 13,
-            "name": "Make a prank call to one of your colleques."
+            "name": "Make a prank call to one of your colleagues."
         },
         {
             "id": 14,
