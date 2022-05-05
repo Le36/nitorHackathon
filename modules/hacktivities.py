@@ -58,11 +58,11 @@ def get_hacktivities():
         },
         {
             "id": 14,
-            "name": ""
+            "name": "Congratulate someone for an false achievment that they haven't done."
         },
         {
             "id": 15,
-            "name": "Task 3"
+            "name": ""
         },
         {
             "id": 16,
