@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="container">
-  <h2>Users</h2>
+  <h2>User</h2>
   <table>
     <tr>
       <th>
@@ -17,8 +17,11 @@
       <th>
         email
       </th>
+      <th>
+        coordinates
+      </th>
     </tr>
-    {% for user in data %}
+    {% for user in users %}
     {% if user.id == user_id %}
     <tr>
       <th>
@@ -29,6 +32,14 @@
       </th>
       <th>
         {{ user.email }}
+      </th>
+      <th>
+        {% for coordinate in coordinates %}
+        {% if coordinate.userId == user_id %}
+        {{coordinate.coordinates.lat}}
+        {{coordinate.coordinates.long}}
+        {% endif %}
+        {% endfor %}
       </th>
     </tr>
     {% endif %}

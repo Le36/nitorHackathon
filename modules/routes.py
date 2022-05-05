@@ -4,6 +4,7 @@ from modules.activites import get_activities
 
 from modules.me import get_me
 from modules.users import get_users
+from modules.coordinates import get_coordinates
 import sys
 
 
@@ -35,4 +36,9 @@ def users():
 @app.route("/users/<string:user_id>", methods=["POST", "GET"])
 def user(user_id):
     if request.method == "GET":
-        return render_template("components/user.html", data=get_users(), user_id=user_id)
+        return render_template(
+          "components/user.html", 
+          users=get_users(), 
+          coordinates=get_coordinates(),
+          user_id=user_id
+          )
