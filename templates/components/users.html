@@ -4,35 +4,39 @@
 
 {% block content %}
 
-<div class="container">
-  <h2>Users</h2>
-  <table>
-    <tr>
-      <th>
-        id
-      </th>
-      <th>
-        name
-      </th>
-      <th>
-        email
-      </th>
-    </tr>
-    {% for user in data %}
-    <tr>
-      <th>
-        {{ user.id }}
-      </th>
-      <th>
-        <a href="/users/{{ user.id }}">{{ user.name }}</a>
-      </th>
-      <th>
-        {{ user.email }}
-      </th>
-    </tr>
-    {% endfor %}
-  </table>
+    <div class="container">
+        <h2>Users</h2>
+        <table>
+            <tr>
+                <th>
+                    id
+                </th>
+                <th>
+                    name
+                </th>
+                <th>
+                    email
+                </th>
+            </tr>
+            {% for user in data %}
+                <tr>
+                    <th>
+                        {{ user.id }}
+                    </th>
+                    <th>
+                        <a href="/users/{{ user.id }}">{{ user.name }}</a>
+                    </th>
+                    <th>
+                        {{ user.email }}
+                    </th>
+                    <th><img src="https://picsum.photos/seed/{{ user.id }}/200/" alt="Profile picture" style="border: 1px solid #ddd;
+                      border-radius: 4px;
+                      padding: 5px;
+                      width: 150px;"></th>
+                </tr>
+            {% endfor %}
+        </table>
 
-</div>
+    </div>
 
 {% endblock %}

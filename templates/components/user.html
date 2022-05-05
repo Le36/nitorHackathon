@@ -4,48 +4,52 @@
 
 {% block content %}
 
-<div class="container">
-  <h2>User</h2>
-  <table>
-    <tr>
-      <th>
-        id
-      </th>
-      <th>
-        name
-      </th>
-      <th>
-        email
-      </th>
-      <th>
-        coordinates
-      </th>
-    </tr>
-    {% for user in users %}
-    {% if user.id == user_id %}
-    <tr>
-      <th>
-        {{ user.id }}
-      </th>
-      <th>
-        <a href="/users/{{ user.id }}">{{ user.name }}</a>
-      </th>
-      <th>
-        {{ user.email }}
-      </th>
-      <th>
-        {% for coordinate in coordinates %}
-        {% if coordinate.userId == user_id %}
-        {{coordinate.coordinates.lat}}
-        {{coordinate.coordinates.long}}
-        {% endif %}
-        {% endfor %}
-      </th>
-    </tr>
-    {% endif %}
-    {% endfor %}
-  </table>
+    <div class="container">
+        <h2>User</h2>
+        <table>
+            <tr>
+                <th>
+                    id
+                </th>
+                <th>
+                    name
+                </th>
+                <th>
+                    email
+                </th>
+                <th>
+                    coordinates
+                </th>
+            </tr>
+            {% for user in users %}
+                {% if user.id == user_id %}
+                    <img src="https://picsum.photos/seed/{{ user.id }}/200/" alt="Profile picture" style="border: 1px solid #ddd;
+                      border-radius: 4px;
+                      padding: 5px;
+                      width: 150px;">
+                    <tr>
+                        <th>
+                            {{ user.id }}
+                        </th>
+                        <th>
+                            <a href="/users/{{ user.id }}">{{ user.name }}</a>
+                        </th>
+                        <th>
+                            {{ user.email }}
+                        </th>
+                        <th>
+                            {% for coordinate in coordinates %}
+                                {% if coordinate.userId == user_id %}
+                                    {{ coordinate.coordinates.lat }}
+                                    {{ coordinate.coordinates.long }}
+                                {% endif %}
+                            {% endfor %}
+                        </th>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
 
-</div>
+    </div>
 
 {% endblock %}
