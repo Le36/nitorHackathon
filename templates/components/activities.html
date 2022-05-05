@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 
+
+
 {% block content %}
-{% include "components/nav-bar.html" %}
 
-<ol>
-{% for activity in activities %}
-    <li>{{activity}}</li>
-{% endfor %}
-</ol>
+<div class="container">
+  <h2>Acktivities</h2>
+  <table>
+    {% for activity in activities %}
+    <tr>
+      <th>
+        {{ activity.id }}
+      </th>
+      <th>
+        {{ activity.name }}
+      </th>
+    </tr>
+    {% endfor %}
+  </table>
 
-<h2>
-    Create your random activity with NLP
-</h2>
+</div>
 
 {% endblock %}
