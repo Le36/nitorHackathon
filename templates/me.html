@@ -20,9 +20,12 @@
   email: {{ me.email }} <br><br>
 
   My Hacktivity:
+
   {% for hacktivity in hacktivities %}
   {% if hacktivity.id == task_id %}
-  {{hacktivity.name}}
+
+  {{ hacktivity.name }}
+
   {% endif %}
   {% endfor %}
 </div>

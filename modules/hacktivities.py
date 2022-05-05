@@ -1,8 +1,9 @@
 import requests
+import json
 
 
 def get_hacktivities():
-    return {
+    hacktivities = [
         {
             "id": 1,
             "name": "Task 1"
@@ -12,7 +13,8 @@ def get_hacktivities():
             "name": "Task 2"
         },
         {
-            "id": 3,
+            id: 3,
             "name": "Task 3"
         },
-    }
+    ]
+    return hacktivities

@@ -1,4 +1,4 @@
 import random
 
 def get_randomInt():
-  return random.randint(0, 3)
+  return random.randint(1, 3)
