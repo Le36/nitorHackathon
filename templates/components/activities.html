@@ -4,12 +4,9 @@
 {% include "components/nav-bar.html" %}
 
 <ol>
-    <li>
-        first activies
-    </li>
-    <li>
-        second activity
-    </li>
+{% for activity in activities %}
+    <li>{{activity}}</li>
+{% endfor %}
 </ol>
 
 <h2>
