@@ -25,4 +25,4 @@ def activities():
 @app.route("/users", methods=["POST", "GET"])
 def users():
     if request.method == "GET":
-        return render_template("users.html", data=get_users())
+        return render_template("components/users.html", data=get_users())
