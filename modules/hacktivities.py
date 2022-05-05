@@ -62,31 +62,27 @@ def get_hacktivities():
         },
         {
             "id": 15,
-            "name": ""
+            "name": "Create a nick name and get everyone to call you with that name for the rest of the day."
         },
         {
             "id": 16,
-            "name": ""
+            "name": "Task 1"
         },
         {
             "id": 17,
             "name": "Task 2"
-        },
-        {
-            "id": 17,
-            "name": "Task 3"
         },
         {
             "id": 18,
-            "name": ""
+            "name": "Task 3"
         },
         {
             "id": 19,
-            "name": "Task 2"
+            "name": "Task 4"
         },
         {
             "id": 20,
-            "name": "Task 3"
+            "name": "Task 5"
         },
     ]
     return hacktivities
