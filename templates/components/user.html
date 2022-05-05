@@ -6,49 +6,39 @@
 
     <div class="container">
         <h2>User</h2>
-        <table>
-            <tr>
-                <th>
-                    id
-                </th>
-                <th>
-                    name
-                </th>
-                <th>
-                    email
-                </th>
-                <th>
-                    coordinates
-                </th>
-            </tr>
-            {% for user in users %}
-                {% if user.id == user_id %}
-                    <img src="https://picsum.photos/seed/{{ user.id }}/200/" alt="Profile picture" style="border: 1px solid #ddd;
+
+        {% for user in users %}
+            {% if user.id == user_id %}
+                <br><br>
+                profile pic:
+                <br><br>
+                <img src="https://picsum.photos/seed/{{ user.id }}/200/" alt="Profile picture" style="border: 1px solid #ddd;
                       border-radius: 4px;
                       padding: 5px;
                       width: 150px;">
-                    <tr>
-                        <th>
-                            {{ user.id }}
-                        </th>
-                        <th>
-                            <a href="/users/{{ user.id }}">{{ user.name }}</a>
-                        </th>
-                        <th>
-                            {{ user.email }}
-                        </th>
-                        <th>
-                            {% for coordinate in coordinates %}
-                                {% if coordinate.userId == user_id %}
-                                    {{ coordinate.coordinates.lat }}
-                                    {{ coordinate.coordinates.long }}
-                                {% endif %}
-                            {% endfor %}
-                        </th>
-                    </tr>
-                {% endif %}
-            {% endfor %}
-        </table>
+                <br><br>
+                id: {{ user.id }} <br><br>
+
+                name: {{ user.name }} <br><br>
+
+                email: {{ user.email }} <br><br>
+
+                {% for coordinate in coordinates %}
+                    {% if coordinate.userId == user_id %}
+
+                        location: <br><br>
+                        <div style="width: 100%">
+                            <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0"
+                                    marginwidth="0"
+                                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{ coordinate.coordinates.lat }},{{ coordinate.coordinates.long }}+(Nitor%20Hacktivities)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                                <a href="https://www.gps.ie/sport-gps/">Nitor</a></iframe>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+            {% endif %}
+        {% endfor %}
+
 
     </div>
 
