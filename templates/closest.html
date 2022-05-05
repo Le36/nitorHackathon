@@ -7,8 +7,10 @@
 {% extends "base.html" %}
 {% include "components/nav-bar.html" %}
 {% block content %}
-<body>
-{{ places }}
-</body>
+    <body>
+    {% for place in places %}
+        {{ place["tags"].name }} <br><br>
+    {% endfor %}
+    </body>
 {% endblock %}
 </html>
