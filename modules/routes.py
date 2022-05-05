@@ -14,3 +14,7 @@ def index():
 def me():
     if request.method == "GET":
         return render_template("me.html", me=get_me())
+
+@app.route("/activities", methods=["GET"])
+def activities():
+    return render_template("components/activities.html")
