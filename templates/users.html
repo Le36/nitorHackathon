@@ -7,8 +7,9 @@
 <body>
 {% for user in data %}
     id: {{ user.id }}
-
-    <br>
+    name: {{ user.name }}
+    email: {{ user.email }}
+    <br><br>
 {% endfor %}
 </body>
 </html>
