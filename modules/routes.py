@@ -75,3 +75,19 @@ def toFlight(flight_id):
             users=get_users(),
             flight_id=flight_id
         )
+
+@app.errorhandler(404)
+def error404(error):
+    return render_template("error.html"), 404
+
+@app.errorhandler(500)
+def error500(error):
+    return render_template("error.html"), 500
+
+@app.errorhandler(502)
+def error502(error):
+    return render_template("error.html"), 502
+
+@app.errorhandler(503)
+def error503(error):
+    return render_template("error.html"), 503
