@@ -42,23 +42,23 @@ def get_hacktivities():
         },
         {
             "id": 10,
-            "name": ""
+            "name": "Convince someone that you used to sing in a choir as a child."
         },
         {
             "id": 11,
-            "name": "Task 2"
+            "name": "Get someone to sing a duetto with you."
         },
         {
             "id": 12,
-            "name": "Task 3"
+            "name": "Challenge every participants in your activity group into stone paper scissors."
         },
         {
             "id": 13,
-            "name": ""
+            "name": "Make a prank call to one of your colleques."
         },
         {
             "id": 14,
-            "name": "Task 2"
+            "name": ""
         },
         {
             "id": 15,
