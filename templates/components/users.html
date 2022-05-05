@@ -6,32 +6,32 @@
 
     <div class="container">
         <h2>Users</h2>
-            <table>
-                <tr>
-                  <th>
+        <table>
+            <tr>
+                <th>
                     id
-                  </th>
-                  <th>
+                </th>
+                <th>
                     name
-                  </th>
-                  <th>
+                </th>
+                <th>
                     email
-                  </th>
-                </tr>
-              {% for user in data %}
+                </th>
+            </tr>
+            {% for user in data %}
                 <tr>
-                  <th>
-                    {{ user.id }}
-                  </th>
-                  <th>
-                    {{ user.name }}
-                  </th>
-                  <th>
-                    {{ user.email }}
-                  </th>
+                    <th>
+                        {{ user.id }}
+                    </th>
+                    <th>
+                        {{ user.name }}
+                    </th>
+                    <th>
+                        {{ user.email }}
+                    </th>
                 </tr>
-        {% endfor %}
-            </table>
+            {% endfor %}
+        </table>
 
     </div>
 
