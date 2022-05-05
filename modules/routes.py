@@ -6,7 +6,7 @@ from modules.me import get_me
 from modules.users import get_users
 from modules.coordinates import get_coordinates
 import sys
-
+import nltk, ngrams
 
 @app.route("/", methods=["POST", "GET"])
 def index():
@@ -23,9 +23,31 @@ def me():
 @app.route("/activities", methods=["GET"])
 def activities():
     activities = get_activities()
-    print(activities, file=sys.stdout)
-    return render_template("components/activities.html", activities=activities)
+    
+    # generated activity
+    activityText = "Visit to Reindeer Farm Snowmobile Safari Cross Country Skiing Downhill Skiing"
+    activitiesTokenized = [w.lower() for w in nltk.word_tokenize(activityText)]
+    lm2 = ngrams.Ngrams(activitiesTokenized)
+    lm2.set_weights(0.1, 0.3, 0.2, 0.2, 0.2) 
 
+    words2 = lm2.generate_sentence()
+    activityLength = 4
+    result = sorted(set(words2[0:activityLength]), key=words2[0:activityLength].index)
+    activityCreated =  " ".join(result)
+    print(activityCreated, file=sys.stdout)
+
+    # Shakespear opinion
+    text = 'shakespeare-hamlet.txt' 
+    shakespeareTokenized = [w.lower() for w in nltk.corpus.gutenberg.words(text)]
+    lm = ngrams.Ngrams(shakespeareTokenized)
+    lm.set_weights(0.01, 0.1, 0.25, 0.15, 0.49)
+
+    start = "Shakespare opinion about this activity: "
+    words = lm.generate_sentence(start=nltk.word_tokenize(start))
+    shakespearOpinion = " ".join(words)
+    print(shakespearOpinion, file=sys.stdout)
+    
+    return render_template("components/activities.html", activities=activities)
 
 @app.route("/users", methods=["POST", "GET"])
 def users():
