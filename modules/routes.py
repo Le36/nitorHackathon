@@ -22,6 +22,12 @@ def me():
         return render_template("me.html", me=get_me())
 
 
+@app.route("/secret", methods=["POST", "GET"])
+def secret():
+    if request.method == "GET":
+        return render_template("components/secret.html")
+
+
 @app.route("/activities", methods=["GET"])
 def activities():
     activities = get_activities()
@@ -76,17 +82,21 @@ def toFlight(flight_id):
             flight_id=flight_id
         )
 
+
 @app.errorhandler(404)
 def error404(error):
     return render_template("error.html"), 404
+
 
 @app.errorhandler(500)
 def error500(error):
     return render_template("error.html"), 500
 
+
 @app.errorhandler(502)
 def error502(error):
     return render_template("error.html"), 502
+
 
 @app.errorhandler(503)
 def error503(error):
