@@ -42,3 +42,12 @@ def user(user_id):
           coordinates=get_coordinates(),
           user_id=user_id
           )
+
+@app.route("/activities/<string:activity_id>", methods=["POST", "GET"])
+def activity(activity_id):
+    if request.method == "GET":
+        return render_template(
+          "components/activity.html", 
+          users=get_users(), 
+          activity_id=activity_id
+          )
