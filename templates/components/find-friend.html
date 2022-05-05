@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% include "components/nav-bar.html" %}
+
+{% block content %}
+
+<h4>Perkele</h4>
+<ol>
+{% for friend in distances %}
+<li>{{friend[0]}}, {{friend[1]}} metres away</li>
+
+{% endfor %}
+</ol>
+
+
+{% endblock %}

@@ -4,7 +4,7 @@ from modules.activites import get_activities
 
 from modules.me import get_me
 from modules.users import get_users
-from modules.coordinates import get_coordinates
+from modules.coordinates import get_coordinates, get_friend_coordinates
 from modules.toFlights import get_toFlights
 from modules.fromFlights import get_fromFlights
 import sys
@@ -82,6 +82,14 @@ def toFlight(flight_id):
             flight_id=flight_id
         )
 
+@app.route("/find-friend", methods=["GET"])
+def find_collegue():
+    distances = get_friend_coordinates()
+    distances.sort(key=lambda a: a[1])
+
+    print(distances, file=sys.stdout)
+
+    return render_template("components/find-friend.html", distances=distances)
 
 @app.errorhandler(404)
 def error404(error):
