@@ -4,6 +4,7 @@ from modules.activites import get_activities
 
 from modules.me import get_me
 from modules.users import get_users
+from modules.users import get_user
 import sys
 
 @app.route("/", methods=["POST", "GET"])
@@ -26,3 +27,8 @@ def activities():
 def users():
     if request.method == "GET":
         return render_template("components/users.html", data=get_users())
+
+@app.route("/users/<string:user_id>", methods=["POST", "GET"])
+def user():
+    if request.method == "GET":
+        return render_template("components/user.html", data=get_user(user_id))
