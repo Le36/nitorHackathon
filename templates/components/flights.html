@@ -7,9 +7,9 @@
 <div class="container">
   <h2>Flights</h2>
   <hr>
-  <h3>Arrival</h3>
+  <h3>Departure</h3>
   <table>
-    {% for flight in fromFlights %}
+    {% for flight in toFlights %}
     <tr>
       <th>
         {{ flight.id }}
@@ -21,7 +21,7 @@
     {% endfor %}
   </table>
   <hr>
-  <h3>Departure</h3>
+  <h3>Arrival</h3>
   <table>
     {% for flight in fromFlights %}
     <tr>
