@@ -19,7 +19,7 @@
                 </th>
             </tr>
             {% for user in users %}
-            {% if (user.tFlightId == flight_id) or (user.fromFlightId == flight_id) %}
+            {% if (user.toFlightId == flight_id) or (user.fromFlightId == flight_id) %}
                 <tr>
                     <th>
                         {{ user.id }}
