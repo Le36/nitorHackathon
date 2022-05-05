@@ -1,5 +1,22 @@
 {% extends "base.html" %}
+{% include "components/nav-bar.html" %}
 {% block content %}
 
-{{ me }}
+    <div class="container">
+        <h2>My profile</h2>
+
+        <br><br>
+        profile pic:
+        <br><br>
+        <img src="https://picsum.photos/seed/{{ me.id }}/200/" alt="Profile picture" style="border: 1px solid #ddd;
+                      border-radius: 4px;
+                      padding: 5px;
+                      width: 150px;">
+        <br><br>
+        id: {{ me.id }} <br><br>
+
+        name: {{ me.name }} <br><br>
+
+        email: {{ me.email }} <br><br>
+    </div>
 {% endblock %}
