@@ -5,7 +5,7 @@ from modules.closest import get_closest
 
 from modules.me import get_me
 from modules.users import get_users
-from modules.coordinates import get_coordinates, get_friend_coordinates, get_own_coords
+from modules.coordinates import get_coordinates, get_friend_coordinates, get_own_coords, get_distance
 from modules.toFlights import get_toFlights
 from modules.fromFlights import get_fromFlights
 from modules.hacktivities import get_hacktivities
@@ -48,7 +48,17 @@ def map_markers():
 
 @app.route("/closest", methods=["GET"])
 def closest_restaurants():
-    return render_template("closest.html", places=get_closest(get_own_coords()))
+    coords = []
+    own_coords = get_own_coords()
+    own_lat = float(own_coords.split("%2C")[0])
+    own_lon = float(own_coords.split("%2C")[1])
+    for place in get_closest(get_own_coords()):
+        place_lat = float(place["lat"])
+        place_lon = float(place["lon"])
+        distance = get_distance(own_lat, own_lon, place_lat, place_lon)
+        coords.append(place["tags"]["name"] + " | Distance: " + str(distance) + "m")
+
+    return render_template("closest.html", places=coords)
 
 
 @app.route("/users", methods=["POST", "GET"])
