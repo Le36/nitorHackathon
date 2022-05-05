@@ -3,15 +3,25 @@
 {% include "components/nav-bar.html" %}
 
 {% block content %}
+<table class="table table-dark" style="background-color: #383838; margin-top: 2em;">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Metres away</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for friend in distances %}
 
-<h4>Perkele</h4>
-<ol>
-{% for friend in distances %}
-<li>{{friend[0]}}, {{friend[1]}} metres away</li>
+      <tr>
+        <td>{{friend[0]}}</td>
+        <td>{{friend[1]}} </td>
+      </tr>
+      {% endfor %}
 
-{% endfor %}
-</ol>
+    </tbody>
+  </table>
 
-{%include "components/footer.html" %}
+  {%include "components/footer.html" %}
 
 {% endblock %}
