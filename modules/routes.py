@@ -7,6 +7,8 @@ from modules.users import get_users
 from modules.coordinates import get_coordinates, get_friend_coordinates
 from modules.toFlights import get_toFlights
 from modules.fromFlights import get_fromFlights
+from modules.hacktivities import get_hacktivities
+from modules.randomInt import get_randomInt
 import sys
 
 
@@ -19,7 +21,12 @@ def index():
 @app.route("/me", methods=["POST", "GET"])
 def me():
     if request.method == "GET":
-        return render_template("me.html", me=get_me())
+        return render_template(
+            "me.html",
+            hacktivities=get_hacktivities(),
+            task_id=get_randomInt(),
+            me=get_me()
+        )
 
 
 @app.route("/secret", methods=["POST", "GET"])
@@ -82,6 +89,7 @@ def toFlight(flight_id):
             flight_id=flight_id
         )
 
+
 @app.route("/find-friend", methods=["GET"])
 def find_collegue():
     distances = get_friend_coordinates()
@@ -90,6 +98,7 @@ def find_collegue():
     print(distances, file=sys.stdout)
 
     return render_template("components/find-friend.html", distances=distances)
+
 
 @app.errorhandler(404)
 def error404(error):
