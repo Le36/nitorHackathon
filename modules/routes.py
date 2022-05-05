@@ -5,4 +5,4 @@ from flask import render_template, request, redirect, session
 @app.route("/", methods=["POST", "GET"])
 def index():
     if request.method == "GET":
-        return "Hello world"
+        return render_template("index.html")
